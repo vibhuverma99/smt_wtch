@@ -3,14 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import xlrd
 import time
+import heartpy as hp
+import csv
 
-loc = "/home/vibhu/smt_wtch/Raw_PPG_OSRAM_Green_WBottom_3min.xls" #location of excel file
+#variables
+freq = 50 #hertz
+data = hp.get_data('raw.csv')
+time = 120 #in seconds
+#working_data,measures = hp.process(data,freq)
 
-df = pd.read_excel(loc)     
-a = df.as_matrix()
+#print(measures['bpm'],end=" ")
+print(np.shape(data))
 
 
-x = np.linspace(0,60,num =(60*50))  #making the x time axis each second has 50 divisions
-y = a[0:3000 , 1]                   #making y as the array of magnitudes from excel
+x = np.linspace(0,time,num =(time*freq))  #making the x time axis each second has 50 divisions
+y = data[2167:(2167 + (time*freq)):1]   #making y as the array of magnitudes from excel
 plt.plot(x,y)
 plt.show()
