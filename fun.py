@@ -1,2 +1,2 @@
-import heartpy
-print(heartpy.__file__)
+def funfunc():
+    print('THIS SHOULD BE PRINTED')
